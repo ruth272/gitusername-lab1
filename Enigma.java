@@ -28,6 +28,7 @@ public class Enigma{
     public String encrypt(String message){
         //TODO
 
+    }
     
     private void rotate(){
         if(rotors[0].rotate()){
