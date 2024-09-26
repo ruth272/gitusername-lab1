@@ -14,12 +14,7 @@ public class Rotor {
     
     public boolean rotate(){        //rotates one position clockwise
         //TODO
-        for (int i=0; i < 27; i++) {
-            char start = rotorValues.charAt(0);
-            rotorValues.indexAt(i) = rotorValues.charAt(i+1);
-
-
-        }
+        rotorValues = rotorValues.substring(1) + rotorValues.charAt(0);     //shifts first character to the end
 
         if (rotorValues.charAt(0) == startChar){        //checks if starting charater is correct
             return true;
