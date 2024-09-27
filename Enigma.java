@@ -23,21 +23,17 @@ public class Enigma{
     public String decrypt(String message){        
         //TODO
         char[] letters = message.toCharArray();
-        String decrypted = null;
-        char startChar = rotors[0].charAt(0);           //holds first character before rotating
-        char secStartChar = rotors[1].charAt(0);           //holds first character before rotating
+        String decrypted = "";
 
         for(int i=0; i < letters.length; i++) {
-            char firstLetter = rotors[0].charAt(i);          //finds the charater at the index of the inner rotor
+            char c = letters[i];
+            int index = rotors[2].indexOf(c);           //finds index of the current character
+            char letter = rotors[1].charAt(index);          //finds the corresponding charater at the index of the middle rotor
 
-            int index = rotors[0].indexOf(firstLetter);           //finds index of the character in the inner most rotor
-            char letter = rotors[2].charAt(i);          //finds the charater at the index of the outter rotor
+            int secIndex = rotors[2].indexOf(letter);       //finds the index of the same letter on the outter rottor
+            char found = rotors[0].charAt(secIndex);        //finds the corresponding letter on the inner rotor
 
-            char secLetter = rotors[1].charAt(index);    //finds the same letter in the middle rotor
-            int secIndex = rotors[3].indexOf(secLetter); //finds the same space in the outter rotor
-            char thirdLetter = rotors[3].charAt(secIndex);      //finds the letter at the outter rotor
-            
-            decrypted += (thirdLetter);     //append encrpted letter to string
+            decrypted += found;     //append encrpted letter to string
             rotate();               //rotates the rotors as needed
 
         }
@@ -48,7 +44,23 @@ public class Enigma{
     
     public String encrypt(String message){
         //TODO
-        return message;
+        char[] letters = message.toCharArray();
+        String encrypted = "";
+        
+        for(int i=0; i < letters.length; i++) {
+            char c = letters[i];
+            int index = rotors[0].indexOf(c);           //finds index of the current character
+            char letter = rotors[2].charAt(index);          //finds the corresponding charater at the index of the outter rotor
+
+            int secIndex = rotors[1].indexOf(letter);       //finds the index of the same letter in ther middle rottor
+            char found = rotors[2].charAt(secIndex);        //finds the corresponding letter on the outter rotor
+
+            encrypted += found;     //append encrpted letter to string
+            rotate();               //rotates the rotors as needed
+
+        }
+        
+        return encrypted;
     }
     
     private void rotate(){
