@@ -12,7 +12,7 @@ public class Rotor {
             
     }
     
-    public boolean rotate(){        //determines if starting charater has changed
+    public boolean rotate(){        //determines if starting character has changed and shifts clockwise
         //TODO
         rotorValues = rotorValues.substring(rotorValues.length() -1) + rotorValues.substring(0,rotorValues.length() -1);     //shifts clockwise
 

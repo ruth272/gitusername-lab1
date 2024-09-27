@@ -22,8 +22,8 @@ public class Enigma{
 
     public String decrypt(String message){        
         //TODO
-        char[] letters = message.toCharArray();
-        String decrypted = "";
+        char[] letters = message.toCharArray();         //changes message to a character array
+        String decrypted = "";                          //new string to hold decrypted message
 
         for(int i=0; i < letters.length; i++) {
             char c = letters[i];
@@ -44,8 +44,8 @@ public class Enigma{
     
     public String encrypt(String message){
         //TODO
-        char[] letters = message.toCharArray();
-        String encrypted = "";
+        char[] letters = message.toCharArray();         //changes message to a character array
+        String encrypted = "";                          //new string to hold encypted message
         
         for(int i=0; i < letters.length; i++) {
             char c = letters[i];
